@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Convertly
 
-# Run and deploy your AI Studio app
+Clean file converter system.
 
-This contains everything you need to run your app locally.
+This repository now contains a deployable converter setup:
 
-View your app in AI Studio: https://ai.studio/apps/drive/1ZnUtKIXhSikTEe2_mAJia8z_MvN4E0dU
+- `frontend/` — Cloudflare Pages static UI
+- `backend/` — Node/Express conversion backend
+- Supabase — storage, jobs and output history
 
-## Run Locally
+## Frontend deployment on Cloudflare Pages
 
-**Prerequisites:**  Node.js
+Use these settings:
 
+```txt
+Root directory: frontend
+Build command: npm run build
+Output directory: out
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Cloudflare environment variables:
+
+```txt
+NEXT_PUBLIC_SUPABASE_URL=https://emnswbljofmtxwuhneru.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_BTqgwDPrTgf6WrzraFphEg_Esk0jKB7
+NEXT_PUBLIC_BACKEND_URL=https://YOUR-BACKEND-URL.com
+```
+
+## Backend deployment
+
+Deploy the `backend/` folder on Railway, Render, Fly.io or a VPS.
+
+Required backend environment variables:
+
+```txt
+PORT=8787
+FRONTEND_ORIGIN=https://YOUR-CLOUDFLARE-PAGES-DOMAIN.pages.dev
+SUPABASE_URL=https://emnswbljofmtxwuhneru.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=YOUR_SECRET_SERVICE_ROLE_KEY
+```
+
+Never put `SUPABASE_SERVICE_ROLE_KEY` in the frontend.
