@@ -1,1 +1,0 @@
-Convertly rebuild branch created. Frontend and backend files should be uploaded from the ZIP or by GitHub web upload.

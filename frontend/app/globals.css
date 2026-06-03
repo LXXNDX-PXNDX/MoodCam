@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg:#0b0b0c;
+  --panel:#151518;
+  --panel2:#1c1c20;
+  --text:#f3f1ea;
+  --muted:#9a978f;
+  --line:#2b2b31;
+  --accent:#d6ff5f;
+  --accent2:#9a8cff;
+  --danger:#ff6b6b;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--text);background:var(--bg);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial}
+a{color:inherit;text-decoration:none}button,input{font:inherit}
+.card{background:var(--panel);border:1px solid var(--line)}
+.tool{background:var(--panel2);border:1px solid var(--line)}
+.tool:hover{border-color:#4b4b55}
+.grid-bg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:28px 28px}
+.ad-slot{min-height:88px;border:1px dashed #44444d;background:#101012;color:var(--muted);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;text-transform:uppercase;letter-spacing:.18em}

@@ -1,8 +1,0 @@
-{
-  "name": "MoodCam",
-  "description": "A viral camera app that analyzes your selfie to generate a hilarious, exaggerated mood diagnosis using AI.",
-  "requestFramePermissions": [
-    "camera",
-    "geolocation"
-  ]
-}
