@@ -45,6 +45,10 @@ async function uploadOutput(pathName: string, buffer: Buffer, contentType: strin
 }
 
 async function convertImage(input: Buffer, filename: string, target: string) {
+  if (target === "bmp") {
+    throw new Error("BMP output is not supported by Sharp on this backend yet. Use PNG or JPG instead.");
+  }
+
   const ext = target === "jpeg" ? "jpg" : target;
   const pipe = sharp(input).rotate();
   let out: Buffer;
@@ -52,7 +56,6 @@ async function convertImage(input: Buffer, filename: string, target: string) {
   else if (target === "webp") out = await pipe.webp({ quality: 88 }).toBuffer();
   else if (target === "avif") out = await pipe.avif({ quality: 70 }).toBuffer();
   else if (target === "tiff") out = await pipe.tiff({ quality: 90 }).toBuffer();
-  else if (target === "bmp") out = await pipe.bmp().toBuffer();
   else out = await pipe.png({ compressionLevel: 9 }).toBuffer();
   return { buffer: out, filename: outputName(filename, ext), ext };
 }
